@@ -5,7 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import { fetchAllProducts } from "@/lib/api";
 import { Product } from "@/types";
 
-export default function Home() {
+export default function Workstations() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -14,7 +14,10 @@ export default function Home() {
         const fetchProducts = async () => {
             try {
                 const data = await fetchAllProducts();
-                setProducts(data);
+                const workstations = data.filter((product) =>
+                    product.productTypes.includes("Workstation")
+                );
+                setProducts(workstations);
                 setLoading(false);
             } catch (err) {
                 setError("Error fetching products");
@@ -28,9 +31,9 @@ export default function Home() {
         <div className="container mx-auto p-8 min-h-screen font-[family-name:var(--font-geist-sans)]">
             <main className="flex flex-col gap-8">
                 <section className="text-center">
-                    <h2 className="text-3xl font-bold mb-4">Welcome to DVS Computers</h2>
+                    <h2 className="text-3xl font-bold mb-4">Workstations</h2>
                     <p className="text-lg text-gray-600">
-                        Discover our range of high-quality computers and accessories.
+                        Discover our powerful workstations for professional workflows.
                     </p>
                 </section>
                 {error && <p className="text-red-500 text-center">{error}</p>}
