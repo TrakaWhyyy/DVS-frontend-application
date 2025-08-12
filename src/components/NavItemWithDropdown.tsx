@@ -17,7 +17,7 @@ export default function NavItemWithDropdown() {
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 onMouseEnter={() => setIsOpen(true)}
-                className="hover:underline focus:outline-none"
+                className="hover:text-blue-600 transition"
             >
                 Products
             </button>

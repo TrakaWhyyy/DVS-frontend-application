@@ -14,10 +14,12 @@ export default function Home() {
         const fetchProducts = async () => {
             try {
                 const data = await fetchAllProducts();
+                console.log("Fetched products:", data);
                 setProducts(data);
                 setLoading(false);
-            } catch (err) {
-                setError("Error fetching products");
+            } catch (err: any) {
+                console.error("Fetch error:", err.message);
+                setError(`Error fetching products: ${err.message}`);
                 setLoading(false);
             }
         };
@@ -27,12 +29,6 @@ export default function Home() {
     return (
         <div className="container mx-auto p-8 min-h-screen font-[family-name:var(--font-geist-sans)]">
             <main className="flex flex-col gap-8">
-                <section className="text-center">
-                    <h2 className="text-3xl font-bold mb-4">Welcome to DVS Computers</h2>
-                    <p className="text-lg text-gray-600">
-                        Discover our range of high-quality computers and accessories.
-                    </p>
-                </section>
                 {error && <p className="text-red-500 text-center">{error}</p>}
                 <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {loading ? (

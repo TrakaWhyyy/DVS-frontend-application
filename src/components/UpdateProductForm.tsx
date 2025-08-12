@@ -1,21 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { createProduct } from "@/lib/api";
+import { updateProduct } from "@/lib/api";
 
-interface AddProductFormProps {
-    onProductAdded: () => void;
+interface UpdateProductFormProps {
+    product: {
+        imdbId: string;
+        name: string;
+        price: number;
+        description: string;
+        photos: string;
+        availability: boolean;
+        productTypes: string;
+    };
+    onProductUpdated: () => void;
 }
 
-export default function AddProductForm({ onProductAdded }: AddProductFormProps) {
+export default function UpdateProductForm({ product, onProductUpdated }: UpdateProductFormProps) {
     const [formData, setFormData] = useState({
-        imdbId: "",
-        name: "",
-        price: "",
-        description: "",
-        photos: "",
-        availability: true,
-        productTypes: "",
+        imdbId: product.imdbId,
+        name: product.name,
+        price: product.price.toString(),
+        description: product.description,
+        photos: product.photos,
+        availability: product.availability,
+        productTypes: product.productTypes,
     });
     const [error, setError] = useState<string | null>(null);
 
@@ -41,37 +50,19 @@ export default function AddProductForm({ onProductAdded }: AddProductFormProps) 
                 availability: formData.availability,
                 productTypes: formData.productTypes,
             };
-            await createProduct(productPayload);
-            setFormData({
-                imdbId: "",
-                name: "",
-                price: "",
-                description: "",
-                photos: "",
-                availability: true,
-                productTypes: "",
-            });
-            onProductAdded();
+            await updateProduct(product.imdbId, productPayload);
+            onProductUpdated();
             setError(null);
         } catch (err) {
-            setError("Failed to add product");
+            setError("Failed to update product");
         }
     };
 
     return (
         <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6">
-            <h3 className="text-2xl font-semibold mb-4">Add New Product</h3>
+            <h3 className="text-2xl font-semibold mb-4">Update Product</h3>
             {error && <p className="text-red-500 mb-4">{error}</p>}
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <input
-                    type="text"
-                    name="imdbId"
-                    placeholder="IMDB ID"
-                    value={formData.imdbId}
-                    onChange={handleInputChange}
-                    className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                />
                 <input
                     type="text"
                     name="name"
@@ -131,9 +122,9 @@ export default function AddProductForm({ onProductAdded }: AddProductFormProps) 
                 </select>
                 <button
                     type="submit"
-                    className="bg-green-400 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
                 >
-                    Add Product
+                    Update Product
                 </button>
             </form>
         </div>

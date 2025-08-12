@@ -31,10 +31,7 @@ export default function Accessories() {
         <div className="container mx-auto p-8 min-h-screen font-[family-name:var(--font-geist-sans)]">
             <main className="flex flex-col gap-8">
                 <section className="text-center">
-                    <h2 className="text-3xl font-bold mb-4">Accessories</h2>
-                    <p className="text-lg text-gray-600">
-                        Enhance your setup with our premium computer accessories.
-                    </p>
+
                 </section>
                 {error && <p className="text-red-500 text-center">{error}</p>}
                 <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

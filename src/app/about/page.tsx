@@ -1,4 +1,4 @@
-export default function Contact() {
+export default function About() {
     return (
         <div className="min-h-screen ">
             {/* Main Content */}
@@ -6,7 +6,7 @@ export default function Contact() {
                 {/* Contact Information Sidebar */}
                 <div className="w-2/5 bg-black text-white p-6 rounded-lg flex flex-col justify-between min-h-[900px]">
                     <div>
-                        <h1 className="text-4xl font-bold mb-4">Contact Information</h1>
+                        <h1 className="text-4xl font-bold mb-4">About us</h1>
                         <p className="text-gray-400 mb-6">Say something to start a live chat!</p>
                         <div className="flex flex-col items-start space-y-7 ">
                             <p className="flex items-center">
@@ -102,37 +102,17 @@ export default function Contact() {
                 </div>
 
                 {/* Contact Form */}
-                <div className="w-4/5 bg-gray-100 pl-8 flex items-center justify-center">
-                    <div className="w-full max-w-md">
-                        <form className="space-y-4">
-                            <div className="flex space-x-4">
-                                <input type="text" placeholder="First Name" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <div className="flex space-x-4">
-                                <input type="text" placeholder="Last Name" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <div className="flex space-x-4">
-                                <input type="email" placeholder="Email" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <div className="flex space-x-4">
-                                <input type="tel" placeholder="Phone Number" className="w-1/2 p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <div>
-                                <input type="text" placeholder="Message" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <button type="submit"
-                                    className="bg-black text-white px-6 py-2 rounded-md flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round"
-                                     className="lucide lucide-send-horizontal-icon lucide-send-horizontal">
-                                    <path
-                                        d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"/>
-                                    <path d="M6 12h16"/>
-                                </svg>
-                                 Send Message
-                            </button>
-                        </form>
+                <div className="w-full bg-gray-100 flex items-center justify-center">
+                    <div className="w-full max-w-md text-center">
+                        <h3 className="text-2xl font-semibold text-gray-400">A BIT</h3>
+                        <h2 className="text-4xl font-bold mb-6">ABOUT US</h2>
+                        <p className="mb-9">
+                            From they fine john he give of rich he. They age and draw mrs like. Improving end distrusts may instantly was household
+                            applauded incommode. Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not.
+                        </p>
+                        <button type="submit" className="bg-black text-white px-6 py-2 rounded-md flex items-center mx-auto">
+                            EXPLORE MORE
+                        </button>
                     </div>
                 </div>
             </div>
