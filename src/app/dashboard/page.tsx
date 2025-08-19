@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import AddProductForm from "@/components/AddProductForm";
 import UpdateProductForm from "@/components/UpdateProductForm";
@@ -15,6 +16,23 @@ export default function Dashboard() {
     const [error, setError] = useState<string | null>(null);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isUpdating, setIsUpdating] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const router = useRouter();
+
+    const checkAuth = async () => {
+        try {
+            const res = await fetch("http://localhost:8005/api/v1/auth/check", {
+                credentials: "include",
+            });
+            if (!res.ok) {
+                router.push("/login");
+            } else {
+                setIsAuthenticated(true);
+            }
+        } catch {
+            router.push("/login");
+        }
+    };
 
     const fetchProducts = async () => {
         try {
@@ -28,8 +46,11 @@ export default function Dashboard() {
     };
 
     useEffect(() => {
-        fetchProducts();
-    }, []);
+        checkAuth();
+        if (isAuthenticated) {
+            fetchProducts();
+        }
+    }, [isAuthenticated]);
 
     const handleProductClick = async (imdbId: string) => {
         try {
@@ -65,6 +86,18 @@ export default function Dashboard() {
         setIsUpdating(false);
     };
 
+    const handleLogout = async () => {
+        await fetch("http://localhost:8005/api/v1/logout", {
+            method: "POST",
+            credentials: "include",
+        });
+        router.push("/login");
+    };
+
+    if (!isAuthenticated) {
+        return <p className="text-center">Redirecting to login...</p>;
+    }
+
     return (
         <div className="container mx-auto p-8 min-h-screen font-[family-name:var(--font-geist-sans)]">
             <main className="flex flex-col gap-8">
@@ -73,6 +106,12 @@ export default function Dashboard() {
                     <p className="text-lg text-gray-600">
                         Manage your product inventory and add new products.
                     </p>
+                    <button
+                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                        onClick={handleLogout}
+                    >
+                        Logout
+                    </button>
                 </section>
                 {error && <p className="text-red-500 text-center">{error}</p>}
                 <section className="grid grid-cols-1 lg:grid-cols-4 gap-8">

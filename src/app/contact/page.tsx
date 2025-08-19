@@ -102,37 +102,28 @@ export default function Contact() {
                 </div>
 
                 {/* Contact Form */}
-                <div className="w-4/5 bg-gray-100 pl-8 flex items-center justify-center">
-                    <div className="w-full max-w-md">
-                        <form className="space-y-4">
-                            <div className="flex space-x-4">
-                                <input type="text" placeholder="First Name" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <div className="flex space-x-4">
-                                <input type="text" placeholder="Last Name" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <div className="flex space-x-4">
-                                <input type="email" placeholder="Email" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <div className="flex space-x-4">
-                                <input type="tel" placeholder="Phone Number" className="w-1/2 p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <div>
-                                <input type="text" placeholder="Message" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
-                            </div>
-                            <button type="submit"
-                                    className="bg-black text-white px-6 py-2 rounded-md flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round"
-                                     className="lucide lucide-send-horizontal-icon lucide-send-horizontal">
-                                    <path
-                                        d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"/>
-                                    <path d="M6 12h16"/>
-                                </svg>
-                                 Send Message
-                            </button>
-                        </form>
+                <div className="w-full md:w-2/3 p-8 flex items-center justify-center">
+                    <div className="w-full max-w-md space-y-4">
+                        <div className="flex space-x-4">
+                            <input type="text" placeholder="First Name" defaultValue="Doe" className="w-1/2 p-2 border-b border-gray-300 focus:outline-none" />
+                            <input type="text" placeholder="Last Name" defaultValue="Doe" className="w-1/2 p-2 border-b border-gray-300 focus:outline-none" />
+                        </div>
+                        <div className="flex space-x-4">
+                            <input type="email" placeholder="Email" defaultValue="+101 3456 789" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
+                        </div>
+                        <div className="flex space-x-4">
+                            <input type="tel" placeholder="Phone Number" defaultValue="+101 3456 789" className="w-full p-2 border-b border-gray-300 focus:outline-none" />
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Message" defaultValue="Write your message..." className="w-full p-2 border-b border-gray-300 focus:outline-none" />
+                        </div>
+                        <button type="submit" className="bg-black text-white px-6 py-2 rounded-md flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"/>
+                                <path d="M6 12h16"/>
+                            </svg>
+                            Send Message
+                        </button>
                     </div>
                 </div>
             </div>
