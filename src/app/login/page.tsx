@@ -1,7 +1,7 @@
 "use client";
 
-import {useState} from "react";
-import {useRouter} from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -11,10 +11,15 @@ export default function Login() {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+        // Validate inputs
+        if (!username.trim() || !password.trim()) {
+            setError("Username and password are required");
+            return;
+        }
         try {
             const res = await fetch("http://localhost:8005/api/v1/login", {
                 method: "POST",
-                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
                 credentials: "include",
             });
@@ -47,7 +52,11 @@ export default function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="border p-2 mb-2 w-full"
                 />
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+                <button
+                    type="submit"
+                    className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    disabled={!username.trim() || !password.trim()}
+                >
                     Login
                 </button>
             </form>
