@@ -17,7 +17,7 @@ export default function Login() {
             return;
         }
         try {
-            const res = await fetch("http://localhost:8005/api/v1/login", {
+            const res = await fetch("http://localhost:8005/api/v1/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,

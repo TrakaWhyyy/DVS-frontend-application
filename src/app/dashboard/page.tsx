@@ -87,7 +87,7 @@ export default function Dashboard() {
     };
 
     const handleLogout = async () => {
-        await fetch("http://localhost:8005/api/v1/logout", {
+        await fetch("http://localhost:8005/api/v1/auth/logout", {
             method: "POST",
             credentials: "include",
         });

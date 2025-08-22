@@ -127,7 +127,19 @@ export default function AddProductForm({ onProductAdded }: AddProductFormProps) 
                     <option value="Accessory">Accessories</option>
                     <option value="Gaming PC">Gaming PC</option>
                     <option value="Laptop">Laptop</option>
-                    <option value="Workstation">Workstation</option>
+                    <option value="All in one system">Workstation</option>
+                    <option value="Processor">Processor</option>
+                    <option value="Motherboard">Motherboard</option>
+                    <option value="RAM">RAM</option>
+                    <option value="Graphics card">Graphics card</option>
+                    <option value="Power supply">Power supply</option>
+                    <option value="Cooling & Ligthing">Cooling & Lighting</option>
+                    <option value="Storage & nas">Storage & nas</option>
+                    <option value="Casings">Casings</option>
+                    <option value="Speaking & Headsets">Speaking & Headsets</option>
+                    <option value="Printer">Printer</option>
+                    <option value="External Storage">External Storage</option>
+                    <option value="External">External</option>
                 </select>
                 <button
                     type="submit"
